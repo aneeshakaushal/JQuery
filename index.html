@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<style>
+		.special{
+			color: blue;
+		}
+		</style>
+		<script src="jquery.js"></script>
+		<script>
+		$(function(){
+
+			/*$('li').on('click',function(){
+				$(this).removeClass('special');
+				$(this).parent().addClass('special');
+				$(this).closest('.list').addClass('special');
+			});*/
+
+			/*$('.list').on('click',function(){
+				//$(this).find('li').filter('.special').remove();
+				$(this).find('.special').remove();
+			});*/
+
+			/*$('li').on('click',function(){
+			//other stuff happens
+			$(this).hide();
+			if(!$(this).is('.special')){
+				alert("not special");
+			}*/
+			
+			//Targeting sublist only
+			$('li').on('click',function(){
+			//other stuff to all other lis
+			console.log("clicked li");
+			if($(this).parent().is('.sublist')){
+				$(this).hide();
+			}
+		});
+	});
+		</script>
+	</head>
+	<body>
+		<ul class="list">
+			<li>one</li>
+			<li class="special">two</li>
+			<li>three</li>
+			<li>
+				<ul class="sublist">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+				</ul>
+			</li>
+		</ul>
+	</body>
+
+</html>

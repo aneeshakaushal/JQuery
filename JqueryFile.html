@@ -1,0 +1,86 @@
+<html>
+<head>
+<script src="jquery.js"></script>
+<script>
+// Wait for my page to load before any javascript is done to it // or u can simply use $(function(){}
+$(document).ready(function(){                      
+
+	//$('#panel1').hide(300).show(100).hide(300);
+	//$('#panel1').slideUp(1000).delay(1000).slideDown(1000);
+	//$('#panel1').fadeOut.delay(1000).slideDown(1000);
+	//$('#panel1').toggle.(1000).delay(1000).toggle(1000);
+	/*$('#panel1').css({
+		color :'red',
+		fontWeight:'bold'
+		display : 'none'
+	});
+	$('panel1').hide(300);
+	$('panel2').css({opacity : '0.5'});*/
+	
+	/*$('#btn1').html('my button');
+	$('#panel1').html('my panel <strong>my bold</strong>');*/
+
+	/*$('#btn1').on('click',function(){
+		$('#panel1 .panel-body').html("My new panel content");
+	});*/
+
+
+	/*$('#btn1').on('click',function(){
+		$('#panel1').toggle();
+});
+	$('#btn2').on('click',function(){
+		$('#panel2').toggle(200);
+	});
+
+	$('#btn3').on('click',function(){
+		$('#panel3').toggle(200);
+	});
+
+	$('#btn4').on('click',function(){
+		$('#panel4').toggle(200);  
+	});*/
+
+
+//target by arrtibute
+//DRY-Dont repeat yourselves
+	/*var content ="My new Awesome Content";
+	$('.panel-button').on('click',function(){
+		var panelId = $(this).attr('id');
+		alert(panelId);
+		/*$('#'+panelId).toggle();
+		$('#'+panelId+' .panel-body').html('');
+	});*/
+
+//DOM traversal
+
+});
+</script>
+</head>
+<body>
+<div class ="jumbotron">
+	<h1>Lets have fun</h1>
+		<button class="panel-button" id="btn1" data-panelid="panel1">Hello</button>
+		<button class="panel-button" id="btn2" data-panelid="panel2">#btn2</button>
+		<button class="panel-button" id="btn3" data-panelid="panel3">#btn3</button>
+		<button class="panel-button" id="btn4" data-panelid="panel4">#btn4</button>
+</div>
+<div id="panel1" style="display :none">Hello
+	<div class="panel-body">content</div>
+	
+</div>
+<div id="panel2" style="display :none">
+
+Aneesha
+<div class="panel-body">content</div>
+</div>
+<div id="panel3" style="display :none">
+	Kaushal
+	<div class="panel-body">content</div>
+</div>
+<div id="panel4" style="display :none">
+	Bye
+	<div class="panel-body">content</div>
+</div>
+
+</body>
+</html>
