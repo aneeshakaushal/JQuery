@@ -27,20 +27,20 @@ $(document).ready(function(){
 
     function AnimationBox(){
     	
-    	var deferred =$.Deferred();
+    	var deferred =[$.Deferred(),$.Deferred()];
 
-    	$(".box").animate({	left:'250px'},1000).promise(),
-      	$(".box2").animate({	left:'250px'},4000).promise();
+    	$(".box").animate({	left:'250px'},1000,function(){
+    		deferred[0].resolve();
+    	})
+      	$(".box2").animate({	left:'250px'},4000,function(){
+      		deferred[1].resolve();
+      	})
       	
-      	return deferred.promise();
+      	deferred[0].promise();
+      	return deferred[1].promise();
       }
   
 
-
-  function AfterAnimation(){
-  	alert("Animation Done");
-  }
-  	
   	AnimationBox().done(function(){
   		alert("Animation Done");
   	});
