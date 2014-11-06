@@ -1,0 +1,62 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	h2 span{
+		color: gray; font-size: .8em;
+		}</style>
+</head>
+<body>
+<ul class="tweets">
+<!--for multiple objects we need to filter through the array
+		this refers to what we have passed... for each item in the array-->
+	<script id="template" type="text/x-handlebars-template">
+		
+		{{#each this}}
+		<li>
+			<h2>{{fulname author}} {{#if age}}= <span>{{age}}</span>{{/if}}</h2>
+		<!--Use three if u dont want to escape html rendering-->
+			<p>{{{tweet}}}</p>
+			{{#if quote}}
+				{{quote}}
+			{{else}}
+				Author doent have a quote
+			{{/if}}
+		</li>
+		{{/each}}
+	</script>
+</ul>
+
+<script type="text/javascript" src="handlebars.js"></script>
+<script type="text/javascript" src="../jquery.js"></script>
+
+<script type="text/javascript">
+$(function(){
+
+	var context =[
+	{
+		author: {first :'Jeffrey', Last : 'way'},
+		tweet:'Good morning have a nyc day!',
+		age : 27,
+		quote : 'Never ever ever give up.'
+	},
+	{
+		author: {first :'John', Last : 'Doe'},
+		tweet:'<strong>Good</strong> morning have a nyc day!',
+		age : 45
+	}];
+
+	Handlebars.registerHelper('fulname',function(author){
+		return author.first +' '+author.Last;
+	});
+	
+	//wants a path to where your template is stored
+	// we say Handlebar take this template and compile it.. a function is returned
+	var template = Handlebars.compile($('#template').html());
+	var temp=template(context);
+	$('ul.tweets').append(temp);
+});
+</script>
+
+</body>
+</html>

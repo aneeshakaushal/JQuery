@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title>
+	</title>
+</head>
+
+<body>
+
+<a href="http://tutplus.com" class="myClass">Click Me</a>
+<!-- Defualt type is text/javacript changed so that it is not taken as javascript-->
+<script id="blogTemplate" type=tuts/template>
+<h2>{{title}}</h2>
+<img src={{thumbnail}} alt={{title}}>
+</script>
+
+<script type="text/javascript" src="../jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//Array of objects
+		var content =[{
+			title : 'My awesome blog post',
+			thumbnail : "pic1.jpg",
+		},
+		{
+			title : 'My second awesome blog post',
+			thumbnail : "pic2.jpg",
+		}],
+		template = $.trim( $('#blogTemplate').html());
+
+		//Used to filter through the array or object
+		// in this case we filltered through  the array
+		$.each(content, function(index,obj){
+			/*i : to make it case insensitive
+				g : to make it global to find all instances of title */
+			 var temp=template.replace( /{{title}}/ig, obj.title).replace(/{{thumbnail}}/ig, obj.thumbnail)
+			 $(document.body).append(temp);
+		});
+
+	});
+</script>
+</body>
+</html>
